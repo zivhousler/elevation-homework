@@ -5,4 +5,5 @@ interface Animal <T>{
     public void mate(Animal partner);
     public String getInstanceOf();
     public Genders getGender();
+
 }
