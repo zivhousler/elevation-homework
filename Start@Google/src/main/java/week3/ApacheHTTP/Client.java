@@ -1,14 +1,5 @@
 package week3.ApacheHTTP;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
-
-import java.io.IOException;
 import java.util.*;
 
 public class Client {
@@ -24,8 +15,8 @@ public class Client {
 
             // create a post code
             Map<String, String> bodyPost = new HashMap<>();
-            bodyPost.put("name", "ziv");
-            bodyPost.put("job", "none");
+            bodyPost.put("name", "morpheus");
+            bodyPost.put("job", "leader");
             response = facade.fetch("https://reqres.in/api/users", Methods.POST, bodyPost);
             System.out.println(response);
 
@@ -43,7 +34,7 @@ public class Client {
             // create a patch code
             Map<String, String> bodyPatch = new HashMap<>();
             bodyPatch.put("string", "hey");
-            response = facade.fetch("https://reqres.in/api/users/1", Methods.PATCH, bodyPatch);
+            response = facade.fetch("https://reqre", Methods.PATCH, bodyPatch);
             System.out.println(response);
 
         } catch (Exception e) {

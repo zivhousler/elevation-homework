@@ -11,6 +11,7 @@ public class Response {
     private final LocalDateTime date;
     private final Methods method;
     private String message;
+    private String data;
 
     private Response(int code, LocalDateTime date, Methods method) {
         this.code = code;
@@ -18,10 +19,11 @@ public class Response {
         this.method = method;
     }
 
-    public static Response createSuccessResponse(int code, Methods method) {
-        return new Response(code, LocalDateTime.now(), method);
+    public static Response createSuccessResponse(int code, Methods method, String data) {
+        Response response = new Response(code, LocalDateTime.now(), method);
+        response.setData(data);
+        return response;
     }
-
 
 
     public static Response createErrorResponse(int code, String message, Methods method) {
@@ -34,13 +36,18 @@ public class Response {
         this.message = message;
     }
 
+    public void setData(String data) {
+        this.data = data;
+    }
+
     @Override
     public String toString() {
         return "Response{" +
-                "code=" + code +
-                ", date=" + date +
-                ", method=" + method +
-                ", message='" + message + '\'' +
+                "code= " + code +
+                ", date= " + date +
+                ", method= " + method +
+                ", data= " + data +
+                ", message= " + message + '\'' +
                 '}';
     }
 }
