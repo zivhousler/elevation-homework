@@ -28,7 +28,7 @@ public class Agency {
             throw new UnsupportedOperationException("There are no more free vehicles at the moment! Try again later...");
         Vehicle vehicle = null;
         TransportationFactory.Vehicles type = passenger.getFavVehicle();
-        if (capacity.get(passenger.getFavVehicle()).isEmpty()) {
+        if (capacity.get(type).isEmpty()) {
             // create a random other object
             boolean flag = false;
             while (!flag) {

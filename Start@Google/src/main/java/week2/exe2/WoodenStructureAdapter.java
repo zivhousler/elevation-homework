@@ -1,21 +1,20 @@
 package week2.exe2;
 
 public class WoodenStructureAdapter implements Animal{
-    WoodenHorse woodenHorse;
+    WoodenStructures woodenStructure;
 
-    public WoodenStructureAdapter(WoodenHorse woodenHorse){
-        this.woodenHorse = woodenHorse;
+    public WoodenStructureAdapter(WoodenStructures woodenStructure){
+        this.woodenStructure = woodenStructure;
     }
-
 
     @Override
     public void move() {
-        woodenHorse.roll();
+        woodenStructure.roll();
     }
 
     @Override
     public void mate(Animal partner) {
-        woodenHorse.replicate();
+        woodenStructure.replicate();
     }
 
     @Override

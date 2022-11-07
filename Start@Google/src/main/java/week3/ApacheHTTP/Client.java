@@ -34,7 +34,7 @@ public class Client {
             // create a patch code
             Map<String, String> bodyPatch = new HashMap<>();
             bodyPatch.put("string", "hey");
-            response = facade.fetch("https://reqre", Methods.PATCH, bodyPatch);
+            response = facade.fetch("https://reqres.in/api/users", Methods.PATCH, bodyPatch);
             System.out.println(response);
 
         } catch (Exception e) {

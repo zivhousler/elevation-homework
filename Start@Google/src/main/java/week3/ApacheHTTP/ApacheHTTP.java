@@ -1,6 +1,5 @@
 package week3.ApacheHTTP;
 
-
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
