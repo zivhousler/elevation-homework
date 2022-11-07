@@ -13,6 +13,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class ApacheHTTP {
 
@@ -67,6 +68,6 @@ public class ApacheHTTP {
             throw new UnknownHostException(e.toString());
         }
 
-        return httpResponse;
+        return Objects.requireNonNull(httpResponse);
     }
 }
