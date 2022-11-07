@@ -14,7 +14,7 @@ public class FacadeHTTP {
 
         int code;
         try {
-            HttpResponse response = apache.fetch(url, method, body);
+            HttpResponse response = apache.fetch(url, method, body); // call the ApacheHTTP api function
             code = response.getStatusLine().getStatusCode();
 
             if (code >= 200 && code <= 205) {
@@ -29,6 +29,7 @@ public class FacadeHTTP {
                 out.close();
                 return Response.createSuccessResponse(code, method, responseString);
             }
+            
             String message = response.getStatusLine().getReasonPhrase();
             return Response.createErrorResponse(code, message, method);
 
