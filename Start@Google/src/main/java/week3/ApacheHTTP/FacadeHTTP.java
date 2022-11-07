@@ -1,6 +1,7 @@
 package week3.ApacheHTTP;
 
 import org.apache.http.HttpResponse;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.UnknownHostException;
@@ -19,17 +20,15 @@ public class FacadeHTTP {
 
             if (code >= 200 && code <= 205) {
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
-                String responseString = null;
 
                 if (response.getEntity() != null) {
                     response.getEntity().writeTo(out);
-                    responseString = out.toString();
                 }
 
                 out.close();
-                return Response.createSuccessResponse(code, method, responseString);
+                return Response.createSuccessResponse(code, method, out.toString());
             }
-            
+
             String message = response.getStatusLine().getReasonPhrase();
             return Response.createErrorResponse(code, message, method);
 
