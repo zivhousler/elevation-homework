@@ -19,7 +19,7 @@ public class AuthenticationController {
     private AuthenticationController() {
     }
 
-    @RequestMapping(value = "login", method = RequestMethod.GET)
+    @RequestMapping(value = "login", method = RequestMethod.POST)
     public ResponseEntity<String> login(@RequestBody ManipulatedUser user) throws IOException {
         String email = user.getEmail();
         String password = user.getPassword();

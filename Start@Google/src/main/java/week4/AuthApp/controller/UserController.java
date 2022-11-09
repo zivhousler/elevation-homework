@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import week4.AuthApp.entities.ManipulatedUser;
+import week4.AuthApp.entities.User;
 import week4.AuthApp.service.AuthenticationService;
 import week4.AuthApp.service.UserService;
 
@@ -22,7 +23,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "updateName", method = RequestMethod.PATCH)
-    public ResponseEntity<Void> updateName(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
+    public ResponseEntity<User> updateName(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
 
         String newName = user.getNewName();
         String email = user.getEmail();
@@ -38,13 +39,13 @@ public class UserController {
         }
 
         validateToken(email, token);
-        userService.updateUserName(email, newName);
 
-        return ResponseEntity.noContent().build();
+
+        return ResponseEntity.ok(userService.updateUserName(email, newName));
     }
 
     @RequestMapping(value = "updateEmail", method = RequestMethod.PATCH)
-    public ResponseEntity<Void> updateEmail(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
+    public ResponseEntity<User> updateEmail(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
         String email = user.getEmail();
         String newEmail = user.getNewEmail();
 
@@ -59,14 +60,12 @@ public class UserController {
         }
 
         validateToken(email, token);
-        userService.updateUserEmail(email, newEmail);
         authenticationService.updateTokenEmailKey(email, newEmail);
-
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(userService.updateUserEmail(email, newEmail));
     }
 
     @RequestMapping(value = "updatePassword", method = RequestMethod.PATCH)
-    public ResponseEntity<Void> updatePassword(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
+    public ResponseEntity<User> updatePassword(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
         String email = user.getEmail();
         String newPassword = user.getNewPassword();
 
@@ -78,9 +77,7 @@ public class UserController {
         }
 
         validateToken(email, token);
-        userService.updateUserPassword(email, newPassword);
-
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(userService.updateUserPassword(email, newPassword));
     }
 
     @RequestMapping(value = "delete", method = RequestMethod.DELETE)
