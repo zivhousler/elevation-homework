@@ -16,34 +16,34 @@ public class UserService {
     private UserService(){
     }
 
-    public void updateUserName(String email, String name) throws IOException {
+    public User updateUserName(String email, String name) throws IOException {
         Optional<User> user = userRepository.getByEmail(email);
 
         if (user.isPresent()) {
             user.get().setName(name);
-            userRepository.updated(user.get());
+            return userRepository.updated(user.get());
         } else {
             throw new IllegalArgumentException(String.format("Email address: %s does not exist", email));
         }
     }
 
-    public void updateUserEmail(String email, String newEmail) throws IOException {
+    public User updateUserEmail(String email, String newEmail) throws IOException {
         Optional<User> user = userRepository.getByEmail(email);
 
         if (user.isPresent()) {
             user.get().setEmail(newEmail);
-            userRepository.updated(user.get());
+            return userRepository.updated(user.get());
         } else {
             throw new IllegalArgumentException(String.format("Email address %s does not match any user", email));
         }
     }
 
-    public void updateUserPassword(String email, String password) throws IOException {
+    public User updateUserPassword(String email, String password) throws IOException {
         Optional<User> user = userRepository.getByEmail(email);
 
         if (user.isPresent()) {
             user.get().setPassword(password);
-            userRepository.updated(user.get());
+            return userRepository.updated(user.get());
         } else {
             throw new IllegalArgumentException(String.format("Email address %s does not match any user", email));
         }

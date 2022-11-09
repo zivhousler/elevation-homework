@@ -27,8 +27,9 @@ public class UserRepository {
         this.usersMap.put(user.getId(), writeToFile(user));
     }
 
-    public void updated(User user) {
+    public User updated(User user) {
         this.usersMap.put(user.getId(), writeToFile(user));
+        return user;
     }
 
     public void delete(User user) {
