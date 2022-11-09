@@ -16,6 +16,7 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationService authenticationService;
 
+
     private AuthenticationController() {
     }
 
@@ -46,6 +47,7 @@ public class AuthenticationController {
         String password = user.getPassword();
 
         if (name == null || email == null || password == null) {
+
             throw new IllegalArgumentException("You must include all parameters for such an action: email, name, password");
         }
         if (!InputValidation.isValidEmail(email)) {

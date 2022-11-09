@@ -7,7 +7,6 @@ import week4.AuthApp.entities.ManipulatedUser;
 import week4.AuthApp.entities.User;
 import week4.AuthApp.service.AuthenticationService;
 import week4.AuthApp.service.UserService;
-
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 
@@ -18,6 +17,7 @@ public class UserController {
     private AuthenticationService authenticationService;
     @Autowired
     private UserService userService;
+
 
     private UserController() {
     }
