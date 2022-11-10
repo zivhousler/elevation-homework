@@ -1,12 +1,13 @@
 package week4.AuthApp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import week4.AuthApp.entities.ManipulatedUser;
-import week4.AuthApp.entities.User;
 import week4.AuthApp.service.AuthenticationService;
 import week4.AuthApp.service.UserService;
+
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 
@@ -23,73 +24,97 @@ public class UserController {
     }
 
     @RequestMapping(value = "updateName", method = RequestMethod.PATCH)
-    public ResponseEntity<User> updateName(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
+    public ResponseEntity<?> updateName(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
 
         String newName = user.getNewName();
         String email = user.getEmail();
 
-        if (newName == null || email == null ) {
-            throw new IllegalArgumentException("You must include all parameters for such an action: email, name");
+        if (newName == null || email == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("You must include all parameters for such an action: email, name, password");
         }
         if (!InputValidation.isValidName(newName)) {
-            throw new IllegalArgumentException(String.format("%s is invalid name!", newName));
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid name!");
         }
         if (!InputValidation.isValidEmail(email)) {
-            throw new IllegalArgumentException(String.format("%s is invalid email!", email));
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid email address!");
         }
 
-        validateToken(email, token);
-
-
-        return ResponseEntity.ok(userService.updateUserName(email, newName));
+        try {
+            validateToken(email, token);
+            return ResponseEntity.ok(userService.updateUserName(email, newName));
+        } catch (AccessDeniedException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("The token is wrong or not up to date.");
+        } catch (IllegalArgumentException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email address: %s does not exist");
+        }
     }
 
     @RequestMapping(value = "updateEmail", method = RequestMethod.PATCH)
-    public ResponseEntity<User> updateEmail(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
+    public ResponseEntity<?> updateEmail(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
         String email = user.getEmail();
         String newEmail = user.getNewEmail();
 
         if (newEmail == null || email == null) {
-            throw new IllegalArgumentException("You must include all parameters for such an action: email, newEmail");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("You must include all parameters for such an action: email, newEmail");
         }
         if (!InputValidation.isValidEmail(newEmail)) {
-            throw new IllegalArgumentException(String.format("%s is invalid email!", newEmail));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Could not log you in. Your new email address is invalid.");
         }
         if (!InputValidation.isValidEmail(email)) {
-            throw new IllegalArgumentException(String.format("%s is invalid new email!", email));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Could not log you in. Your email address is invalid.");
         }
 
-        validateToken(email, token);
-        authenticationService.updateTokenEmailKey(email, newEmail);
-        return ResponseEntity.ok(userService.updateUserEmail(email, newEmail));
+        try {
+            validateToken(email, token);
+            authenticationService.updateTokenEmailKey(email, newEmail);
+            return ResponseEntity.ok(userService.updateUserEmail(email, newEmail));
+        } catch (AccessDeniedException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("The token is wrong or not up to date.");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("This email address already exists!");
+        }
     }
 
     @RequestMapping(value = "updatePassword", method = RequestMethod.PATCH)
-    public ResponseEntity<User> updatePassword(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
+    public ResponseEntity<?> updatePassword(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
         String email = user.getEmail();
         String newPassword = user.getNewPassword();
 
-        if (email == null || newPassword == null ) {
-            throw new IllegalArgumentException("You must include all parameters for such an action: email, newPassword");
+        if (email == null || newPassword == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("You must include all parameters for such an action: email, newPassword");
+        }
+        if (!InputValidation.isValidEmail(email)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Could not log you in. Your email address is invalid.");
         }
         if (!InputValidation.isValidPassword(newPassword)) {
-            throw new IllegalArgumentException(String.format("%s is invalid password!", newPassword));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Could not log you in. Your password is invalid.");
         }
 
-        validateToken(email, token);
+        try {
+            validateToken(email, token);
+        } catch (AccessDeniedException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("The token is wrong or not up to date.");
+        }
+
         return ResponseEntity.ok(userService.updateUserPassword(email, newPassword));
     }
 
     @RequestMapping(value = "delete", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> deleteUser(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
+    public ResponseEntity<?> deleteUser(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
         String email = user.getEmail();
 
         if (email == null) {
-            throw new IllegalArgumentException("You must include all parameters for such an action: email");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("You must include all parameters for such an action: email");
         }
 
-        validateToken(email, token);
-        userService.deleteUser(email);
+        try {
+            validateToken(email, token);
+            userService.deleteUser(email);
+        } catch (AccessDeniedException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("The token is wrong or not up to date.");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Email address does not match any user.");
+        }
 
         return ResponseEntity.noContent().build();
     }
