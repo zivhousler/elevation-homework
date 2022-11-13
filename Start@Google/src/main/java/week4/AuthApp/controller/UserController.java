@@ -23,7 +23,7 @@ public class UserController {
     private UserController() {
     }
 
-    @RequestMapping(value = "updateName", method = RequestMethod.PATCH)
+    @RequestMapping(value = "updateName", method = RequestMethod.PATCH, consumes = "application/json")
     public ResponseEntity<?> updateName(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
 
         String newName = user.getNewName();
@@ -49,8 +49,11 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "updateEmail", method = RequestMethod.PATCH)
+
+    @RequestMapping(value = "updateEmail", method = RequestMethod.PATCH, consumes = "application/json")
     public ResponseEntity<?> updateEmail(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
+        // ResponseEntity<BaseReponse<UserToPresent>> -> UserToPresent is a class that returns only specific data out of the user.
+
         String email = user.getEmail();
         String newEmail = user.getNewEmail();
 
@@ -75,7 +78,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "updatePassword", method = RequestMethod.PATCH)
+    @RequestMapping(value = "updatePassword", method = RequestMethod.PATCH, consumes = "application/json")
     public ResponseEntity<?> updatePassword(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
         String email = user.getEmail();
         String newPassword = user.getNewPassword();
@@ -99,7 +102,7 @@ public class UserController {
         return ResponseEntity.ok(userService.updateUserPassword(email, newPassword));
     }
 
-    @RequestMapping(value = "delete", method = RequestMethod.DELETE)
+    @RequestMapping(value = "delete", method = RequestMethod.DELETE, consumes = "application/json")
     public ResponseEntity<?> deleteUser(@RequestBody ManipulatedUser user, @RequestHeader(value = "token") String token) throws IOException {
         String email = user.getEmail();
 
