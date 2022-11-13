@@ -19,7 +19,7 @@ public class AuthenticationController {
     private AuthenticationController() {
     }
 
-    @RequestMapping(value = "login", method = RequestMethod.POST)
+    @RequestMapping(value = "login", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<String> login(@RequestBody ManipulatedUser user) throws IOException {
         String email = user.getEmail();
         String password = user.getPassword();
@@ -39,7 +39,7 @@ public class AuthenticationController {
         return ResponseEntity.ok(token);
     }
 
-    @RequestMapping(value = "register", method = RequestMethod.POST)
+    @RequestMapping(value = "register", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<?> register(@RequestBody ManipulatedUser user) throws IOException {
         String email = user.getEmail();
         String name = user.getName();

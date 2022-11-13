@@ -1,5 +1,6 @@
 package week1;
 
+import org.junit.Test;
 import utils.NameGenerator;
 import utils.RandomData;
 
@@ -16,15 +17,12 @@ public class Player {
     private void setRole(Roles role) {
         this.role = role;
     }
-
     private void setName(String name) {
         this.name = name;
     }
-
     private void setNumber(String number) {
         this.number = number;
     }
-
     private void setGrade(int grade) {
         this.grade = grade;
     }
@@ -33,23 +31,18 @@ public class Player {
     public String getName() {
         return name;
     }
-
     public String getNumber() {
         return number;
     }
-
     public int getGrade() {
         return grade;
     }
-
     public Roles getRole() {
         return role;
     }
 
     // ---------- Constructor ---------- //
-    private Player() {
-//        throw new UnsupportedOperationException();
-    }
+    private Player() {}
 
     public static final Player createRandomPlayer(int position, String shirtNumber, NameGenerator nameGenerator) {
         Player player = new Player();
@@ -71,7 +64,6 @@ public class Player {
         player.setRole(Roles.values()[position]);
         player.setNumber(shirtNumber);
         player.setGrade(RandomData.generateRandomNumber(30, 80));
-        player.setName("");
         return player;
     }
 

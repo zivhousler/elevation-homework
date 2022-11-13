@@ -17,6 +17,9 @@ public class Team {
     public ArrayList<Player> getTeam() {
         return team;
     }
+    public int getTeamLength(){
+        return team.size();
+    }
 
     public String getTeamName() {
         return name;
@@ -30,10 +33,13 @@ public class Team {
     }
 
     // ---------- Static Factory Methods ---------- //
-    public static Team createNewTeam(int numOfPlayers, int[] restrictions) throws Exception {
+    public static Team createNewTeam(int numOfPlayers, int[] restrictions) {
         // Check if the number of constraints isn't greater than the number of the players in the team
-        if (!isConstraintValid(numOfPlayers, restrictions))
-            throw new Exception("Make sure to insert correct amount of restrictions");
+        try {
+            isConstraintValid(numOfPlayers, restrictions);
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("Either numOfPlayers or restrictions are illegal");
+        }
         // Generate a team with the requested amount of players followed by restrictions
         return generatePlayers(numOfPlayers, restrictions);
     }
@@ -43,15 +49,15 @@ public class Team {
         this.team.add(player);
     }
 
-    public void printTeam(){
+    public void printTeam() {
         for (Player player : this.getTeam()) {
             System.out.println(player.toString());
         }
     }
 
     public void writeToFile(String fileName) {
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-            for (Player player: this.team) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            for (Player player : this.team) {
                 writer.write(player.toString() + '\n');
             }
         } catch (IOException ex) {
@@ -59,20 +65,24 @@ public class Team {
         }
     }
 
-    private static boolean isConstraintValid(int numOfPlayers, int[] restrictions) {
+    private static void isConstraintValid(int numOfPlayers, int[] restrictions) {
         // Check if the restrictions are legal
+        if(numOfPlayers < 0) throw new IllegalArgumentException("Number of players must be a positive number");
+        if(restrictions.length != 4) throw new IllegalArgumentException("Restrictions length must be equal to 4 (1 for each role)");
+
         int sum = 0;
         for (int number : restrictions) {
             sum += number;
-            if (sum > numOfPlayers || number < 0) return false;
+            if (sum > numOfPlayers || number < 0)
+                throw new IllegalArgumentException("Each restriction must be a positive number larger or equals to 0");
         }
 
         // Check if there is at least 1 GOAL_KEEPER and 2 of all the rest
         int[] atLeastConstraints = {1, 2, 2, 2};
         for (int i = 0; i < atLeastConstraints.length; i++) {
-            if (atLeastConstraints[i] > restrictions[i]) return false;
+            if (atLeastConstraints[i] > restrictions[i])
+                throw new IllegalArgumentException("Restrictions don't match the native restrictions {1,2,2,2}");
         }
-        return true;
     }
 
     private static Team generatePlayers(int numOfPlayers, int[] restrictions) {
