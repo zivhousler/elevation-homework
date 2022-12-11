@@ -86,7 +86,7 @@ public class Team {
     }
 
     private static Team generatePlayers(int numOfPlayers, int[] restrictions) {
-        String[] shirtsNumbers = RandomData.generateRandomShirts(numOfPlayers);
+        Integer[] shirtsNumbers = RandomData.generateRandomShirts(numOfPlayers);
         Team team = new Team();
         NameGenerator nameGenerator = new NameGenerator(RandomData.getFirstNameList(), RandomData.getLastNameList());
 

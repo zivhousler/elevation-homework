@@ -1808,9 +1808,9 @@ public class RandomData {
         return getRandomFirstName() + " " + getRandomLastName();
     }
 
-    public static String[] generateRandomShirts(int amount) {
+    public static Integer[] generateRandomShirts(int amount) {
         int rand;
-        String[] shirts = new String[amount];
+        Integer[] shirts = new Integer[amount];
         for (int i = 0; i < amount; i++) {
             rand = generateRandomNumber(0, 100);
             if (Arrays.asList(shirts).contains(rand)) {
@@ -1818,7 +1818,7 @@ public class RandomData {
                 i--;
                 continue;
             }
-            shirts[i] = Integer.toString(rand);
+            shirts[i] = rand;
         }
         return shirts;
     }

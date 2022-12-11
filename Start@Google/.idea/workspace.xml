@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3a3568b7-a8d7-4a3f-b73d-3141dad7ba7d" name="Changes" comment="removed log4j" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="89821ac8e7de7b71c73958145ecaa95bf8ef9796" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2GwLH9hcjvhErUp5abMHmNMOCT4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/zivhousler/Desktop/Projects/Personal/elevation-homework/Start@Google&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.runner&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/week4/AuthApp" />
+      <recent name="$PROJECT_DIR$/src/main/java/week4" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="StartAtGoogle" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="StartAtGoogle" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3a3568b7-a8d7-4a3f-b73d-3141dad7ba7d" name="Changes" comment="" />
+      <created>1667294608788</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667294608788</updated>
+    </task>
+    <task id="LOCAL-00001" summary="First commit">
+      <created>1667294772138</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667294772138</updated>
+    </task>
+    <task id="LOCAL-00002" summary="First commit">
+      <created>1667294810286</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667294810286</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Completed visitor task">
+      <created>1667298668223</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667298668223</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Completed ApacheHTTP task">
+      <created>1667389074039</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667389074039</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Extend farm task with adaptors">
+      <created>1667403917662</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1667403917662</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fixed apache calls and data return">
+      <created>1667606919471</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667606919471</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fixed type of animal in farm task">
+      <created>1667806043089</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667806043089</updated>
+    </task>
+    <task id="LOCAL-00008" summary="adapt http">
+      <created>1667807218703</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1667807218703</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Adjusted user-auth task with SpringBoot">
+      <created>1667851564183</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1667851564183</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fix sprintboot task">
+      <created>1667984206583</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1667984206583</updated>
+    </task>
+    <task id="LOCAL-00011" summary="removed log4j">
+      <created>1667998091868</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1667998091868</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First commit" />
+    <MESSAGE value="Completed visitor task" />
+    <MESSAGE value="Completed ApacheHTTP task" />
+    <MESSAGE value="Extend farm task with adaptors" />
+    <MESSAGE value="Fixed apache calls and data return" />
+    <MESSAGE value="Fixed type of animal in farm task" />
+    <MESSAGE value="adapt http" />
+    <MESSAGE value="Adjusted user-auth task with SpringBoot" />
+    <MESSAGE value="Fix sprintboot task" />
+    <MESSAGE value="removed log4j" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed log4j" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="i" />
+      </configuration>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/src/main/java/week3/CreationalPatterns1/Passenger.java" line="42">
+        <watch expression="passengersList" />
+      </inline-watch>
+    </watches-manager>
+  </component>
+</project>
